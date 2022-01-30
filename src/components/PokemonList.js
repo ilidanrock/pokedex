@@ -11,7 +11,7 @@ export default function PokemonList(props) {
       horizontal={false}
       numColumns={2}
       showsVerticalScrollIndicator={false}
-      keyExtractor={(pokemon) => String(pokemon.id)}
+      keyExtractor={() => String(Math.random())}
       renderItem={({ item }) => <PokemonCard pokemon = {item}/> }
       contentContainerStyle={styles.flatListContentContainer}
     />
