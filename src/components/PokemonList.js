@@ -1,10 +1,14 @@
-import { StyleSheet, FlatList, Text, View } from "react-native";
+import { StyleSheet, FlatList, ActivityIndicator } from "react-native";
 import  PokemonCard  from "./PokemonCard";
 
 
 export default function PokemonList(props) {
-  const { pokemons } = props;
-  console.log(pokemons);
+  const { pokemons , LoadPokemons , isNext} = props;
+  // console.log(pokemons);
+
+  const loadMore = () => {
+    LoadPokemons()
+  }
   return (
     <FlatList
       data={pokemons}
@@ -14,6 +18,16 @@ export default function PokemonList(props) {
       keyExtractor={() => String(Math.random())}
       renderItem={({ item }) => <PokemonCard pokemon = {item}/> }
       contentContainerStyle={styles.flatListContentContainer}
+      onEndReached={ isNext && loadMore} // when we reach list final, loadMore function it will be executed
+      onEndReachedThreshold={0.1} // with attribute we achive execute loadMore 0.1 seconds before of final list.
+      ListFooterComponent={
+        isNext && (
+        <ActivityIndicator
+          size="large"
+          style={styles.spinner}
+          color="#AEAEAE"
+        />)
+      }
     />
   );
 }
@@ -27,4 +41,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-around"
   },
+  spinner:{
+    marginTop: 20,
+    marginBottom: 60
+  }
 })

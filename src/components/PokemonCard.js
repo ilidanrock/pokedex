@@ -9,7 +9,7 @@ export default function pokemonCard(props) {
   const pokemonColor = getColorByPokemon(pokemon.type)
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles}
     const gotToPokemon = () => {
-      console.log(`Vamos al pokemon ${pokemon.name}`);
+      // console.log(`Vamos al pokemon ${pokemon.name}`);
     }
   return (
     <TouchableWithoutFeedback onPress={gotToPokemon}>
