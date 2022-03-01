@@ -1,33 +1,39 @@
-import React, {useState , useEffect} from "react";
-import { View, Text } from "react-native";
-import { getPokemonDetailsApi } from '../api/pokemon'
+import React, { useState, useEffect } from "react";
+import { ScrollView } from "react-native";
+import { getPokemonDetailsApi } from "../api/pokemon";
+import Header from "../components/Pokemon/Header";
 
 export default function Pokemon(props) {
-  const {navigation , route: {params} } =props
-  console.log("ID", params.id);  
+  const {
+    navigation,
+    route: { params },
+  } = props;
+  console.log("ID", params.id);
 
-  const [pokemon , setPokemon] = useState(null)
+  const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await getPokemonDetailsApi(params.id)
-        setPokemon(response)
-
+        const response = await getPokemonDetailsApi(params.id);
+        setPokemon(response);
       } catch (error) {
-        navigation.goBack()
+        navigation.goBack();
       }
-    })() 
-  }, [params])
-  
+    })();
+  }, [params]);
+
   if (!pokemon) {
-    return null
+    return null;
   }
   return (
-    <View>
-      <Text>Estamos en un POKEMON</Text>
-      <Text>{pokemon.name}</Text>
-
-    </View>
+    <ScrollView>
+      <Header
+        name={pokemon.name}
+        order={pokemon.order}
+        image={pokemon.sprites.other["official-artwork"].front_default}
+        type={pokemon.types[0].type.name}
+      />
+    </ScrollView>
   );
 }
