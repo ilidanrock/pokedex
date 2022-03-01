@@ -32,7 +32,7 @@ export default function Pokemon(props) {
       <Header
         name={pokemon.name}
         order={pokemon.order}
-        image={pokemon.sprites.other["official-artwork"].front_default}
+        image={pokemon.sprites.versions["generation-v"]['black-white'].animated.front_default}
         type={pokemon.types[0].type.name}
       />
       <Type types={pokemon.types}/>

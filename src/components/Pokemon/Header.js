@@ -39,10 +39,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    top: 30,
+    top: 8,
   },
   image: {
-    width: 250,
+    width: 200,
     height: 300,
     resizeMode: 'contain'
   },
