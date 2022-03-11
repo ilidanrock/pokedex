@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView , StyleSheet} from "react-native";
 import { getPokemonDetailsApi } from "../api/pokemon";
 import Header from "../components/Pokemon/Header";
 import Type from "../components/Pokemon/Type";
@@ -60,3 +60,9 @@ export default function Pokemon(props) {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  types: {
+    
+  },
+})

@@ -33,7 +33,7 @@ export default function Stats({ stats }) {
 const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 20,
-    marginTop: 40,
+    marginTop: 25,
   },
   title: {
     fontWeight: "bold",
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   bgBar: {
     backgroundColor: "#dedede",
-    width: "88%",
+    width: "70%",
     height: 10,
     borderRadius: 20,
     overflow: "hidden",

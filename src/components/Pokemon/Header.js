@@ -29,7 +29,7 @@ export default Header;
 const styles = StyleSheet.create({
   bg: {
     width: "100%",
-    height: 400,
+    height: 330,
     position: "absolute",
     borderBottomEndRadius: 300,
     borderBottomLeftRadius: 300,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    top: 8,
+    top: -40,
   },
   image: {
     width: 200,
