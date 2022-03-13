@@ -5,7 +5,8 @@ import Header from "../components/Pokemon/Header";
 import Type from "../components/Pokemon/Type";
 import Stats from "../components/Pokemon/Stats";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { size } from "lodash";
+import Favorite from "../components/Pokemon/Favorite";
+import useAuth from '../hooks/useAuth'
 
 export default function Pokemon(props) {
   const {
@@ -15,9 +16,23 @@ export default function Pokemon(props) {
 
   const [pokemon, setPokemon] = useState(null);
 
+  const { auth }= useAuth()
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await getPokemonDetailsApi(params.id);
+        
+        setPokemon(response);
+      } catch (error) {
+        navigation.goBack();
+      }
+    })();
+  }, [params]);
+
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () => (auth) && <Favorite id={pokemon?.id}/>,
       headerLeft: () => (
         <Icon
           name="arrow-left"
@@ -28,18 +43,7 @@ export default function Pokemon(props) {
         />
       ),
     });
-  }, [navigation, params]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getPokemonDetailsApi(params.id);
-        setPokemon(response);
-      } catch (error) {
-        navigation.goBack();
-      }
-    })();
-  }, [params]);
+  }, [navigation, params , pokemon]);
 
   if (!pokemon) {
     return null;
