@@ -5,7 +5,7 @@ import { FAVORITE_STORAGE } from "../utilis/constants";
 export async function getPokemonFavoritesApi() {
     try {
         const response = await AsyncStorage.getItem(FAVORITE_STORAGE)
-        return response
+        return JSON.parse(response || [] )
     } catch (error) {
         throw error
     }
@@ -15,7 +15,7 @@ export async function getPokemonFavoritesApi() {
 export async function addPokemonFavoriteApi(id) {
     try {
         
-        const favorites = []
+        const favorites = await getPokemonFavoritesApi()
         favorites.push(id)
         await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(favorites))
         

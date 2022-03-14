@@ -7,7 +7,7 @@ import {
 
 export default function Favorite() {
   const fav = async () => {
-    console.log(await getPokemonFavoritesApi());
+    await getPokemonFavoritesApi()
   };
 
   const removeFav = async () => {
