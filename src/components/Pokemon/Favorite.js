@@ -10,22 +10,28 @@ import {
 export default function Favorite(props) {
   const { id } = props;
   console.log(id, "ID");
+  const [swith, setSwith] = useState(false)
+
+  const onReloadFavorite = () => {
+    setSwith( prev => !prev)
+  }
 
   const addFavorite = async () => {
     console.log("Anadir favorites", id);
-    await addPokemonFavoriteApi(id);
+    try {
+      await addPokemonFavoriteApi(id);
+      onReloadFavorite()
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const removeFavorite = async () => {
     console.log("Se activa el remove favorite");
     await removePokemonFavoriteId(id)
+    onReloadFavorite()
   }
 
-  
-  // const getFav = async () => {
-  //   const response = await getPokemonFavoritesApi();
-  //   console.log(response);
-  // };r
 
   const [favorite, setFavorite] = useState(undefined);
 
@@ -38,7 +44,7 @@ export default function Favorite(props) {
         throw error;
       }
     })();
-  }, [id, favorite]);
+  }, [id, favorite, swith]);
 
   return (
     <>
