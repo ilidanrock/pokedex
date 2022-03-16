@@ -6,6 +6,7 @@ import {
 } from "../api/favorite";
 
 export default function Favorite() {
+
   const fav = async () => {
     await getPokemonFavoritesApi()
   };
