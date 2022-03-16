@@ -54,10 +54,11 @@ export default function Navigation() {
 }
 
 function renderPokeball() {
+  console.log("Se activa pokemon");
   return (
     <Image
       source={require("../assets/pokeball.png")}
-      style={{ width: 75, height: 75, top: -15 }}
+      style={{ width: 80, height: 80, top: -15 }}
     />
   );
 }

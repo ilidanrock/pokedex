@@ -1,4 +1,4 @@
-import { View, Text , StyleSheet , Image , TouchableWithoutFeedback } from 'react-native';
+import { View, Text , StyleSheet , Image , TouchableWithoutFeedback , TouchableOpacity} from 'react-native';
 import React from 'react';
 import  getColorByPokemon  from "../utilis/getColorByPokemon";
 import { capitalize } from "lodash";
