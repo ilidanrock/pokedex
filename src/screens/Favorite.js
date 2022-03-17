@@ -5,6 +5,7 @@ import { getPokemonFavoritesApi } from "../api/favorite";
 import { getPokemonDetailsApi } from "../api/pokemon";
 import useAuth from "../hooks/useAuth";
 import PokemonList from "../components/PokemonList";
+import NoLogged from "../components/NoLogged";
 
 export default function Favorite() {
   const [pokemons, setPokemons] = useState([]);
@@ -38,12 +39,12 @@ export default function Favorite() {
     }, [auth])
   );
 
-  useEffect(() => {
-    console.log("Pokemons", pokemons);
-  }, [pokemons]);
+  // useEffect(() => {
+  //   console.log("Pokemons", pokemons);
+  // }, [pokemons]);
 
   return !auth ? (
-    <Text>Usuario no logeados</Text>
+    <NoLogged/>
   ) : (
     <SafeAreaView>
       <PokemonList pokemons={pokemons} />
