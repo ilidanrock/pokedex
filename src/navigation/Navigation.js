@@ -47,6 +47,7 @@ export default function Navigation() {
           },
           title: "Favoritos",
           headerTitleAlign: "center",
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
