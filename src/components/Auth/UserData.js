@@ -19,10 +19,9 @@ export default function UserData() {
         } catch (error) {
           throw error
         }
-
       }
-      )()
-    })
+      )();
+    }, [])
   )
   const { auth, logout } = useAuth();
   return (
